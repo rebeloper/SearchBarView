@@ -8,7 +8,7 @@
 import SwiftUI
 
 @available(iOS 14.0, *)
-struct SearchBarView: View {
+public struct SearchBarView: View {
     
     var title: String
     @Binding var text: String
@@ -22,7 +22,7 @@ struct SearchBarView: View {
     private var onCommit: () -> Void
     private let onCancel: () -> Void
     
-    init(title: String = "Search...",
+    public init(title: String = "Search...",
          text: Binding<String>,
          onCancel: @escaping () -> ()) {
         self.title = title
@@ -38,7 +38,7 @@ struct SearchBarView: View {
         self.onCancel = onCancel
     }
     
-    init(title: String = "Search...",
+    public init(title: String = "Search...",
          text: Binding<String>,
          showsCancelButton: Bool = true,
          cancelButtonLabel: @escaping () -> AnyView = { AnyView(Text("Cancel")) },
@@ -62,7 +62,7 @@ struct SearchBarView: View {
         self.onCancel = onCancel
     }
     
-    var body: some View {
+    public var body: some View {
         HStack(spacing: spacing) {
             TextField(title, text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
