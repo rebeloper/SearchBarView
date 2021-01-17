@@ -77,11 +77,11 @@ var body: some View {
 
 Here's the created view:
 
-
+<img src="../main/Sources/SearchBarView/SearchBarView0.png" width="350px">
 
 And when the user has typed something:
 
-
+<img src="../main/Sources/SearchBarView/SearchBarView1.png" width="350px">
 
 ## ✍️ Contact
 
