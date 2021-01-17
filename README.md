@@ -4,7 +4,7 @@
 ![platform iOS](https://img.shields.io/badge/platform-iOS-blue.svg)
 ![deployment target iOS 14](https://img.shields.io/badge/deployment%20target-iOS%2014-blueviolet)
 
-**SearchBarView** is a lightweight library that creates a native `SwiftUI` search bar similar to the `UISearchBarView`.
+**SearchBarView** is a lightweight library that creates a native `SwiftUI` search bar similar to the `UISearchBar`.
 
 ## 💻 Installation
 ### 📦 Swift Package Manager
