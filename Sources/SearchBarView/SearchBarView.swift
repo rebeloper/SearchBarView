@@ -25,7 +25,7 @@ public struct SearchBarView: View {
     private var onCommit: () -> Void
     private let onCancel: () -> Void
     
-    public init(title: String = "Search...",
+    public init(title: String = "Search",
          text: Binding<String>,
          onCancel: @escaping () -> ()) {
         self.title = title
