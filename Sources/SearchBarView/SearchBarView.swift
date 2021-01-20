@@ -13,6 +13,7 @@ public struct SearchBarView: View {
     var title: String
     @Binding var text: String
     private var font: Font
+    private var iconView: () -> AnyView
     private var showsCancelButton: Bool
     private var cancelButtonLabel: () -> AnyView
     private var showsClearSearchButton: Bool
@@ -30,6 +31,7 @@ public struct SearchBarView: View {
         self.title = title
         self._text = text
         self.font = .subheadline
+        self.iconView = { AnyView(Image(systemName: "magnifyingglass").foregroundColor(.gray)) }
         self.showsCancelButton = true
         self.cancelButtonLabel = { AnyView(Text("Cancel")) }
         self.showsClearSearchButton = true
@@ -45,6 +47,7 @@ public struct SearchBarView: View {
     public init(title: String = "Search",
          text: Binding<String>,
          font: Font = .subheadline,
+         iconView: @escaping () -> AnyView = { AnyView(Image(systemName: "magnifyingglass").foregroundColor(.gray)) },
          showsCancelButton: Bool = true,
          cancelButtonLabel: @escaping () -> AnyView = { AnyView(Text("Cancel")) },
          showsClearSearchButton: Bool = true,
@@ -58,6 +61,7 @@ public struct SearchBarView: View {
         self.title = title
         self._text = text
         self.font = font
+        self.iconView = iconView
         self.showsCancelButton = showsCancelButton
         self.cancelButtonLabel = cancelButtonLabel
         self.showsClearSearchButton = showsClearSearchButton
@@ -74,7 +78,7 @@ public struct SearchBarView: View {
         HStack(spacing: spacing) {
             
             HStack(spacing: 3) {
-                Image(systemName: "magnifyingglass").foregroundColor(.gray)
+                iconView()
                 TextField(title, text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit).foregroundColor(.primary)
                 if text != "", showsClearSearchButton {
                     Button {
