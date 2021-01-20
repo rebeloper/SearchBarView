@@ -64,15 +64,24 @@ public struct SearchBarView: View {
     
     public var body: some View {
         HStack(spacing: spacing) {
-            TextField(title, text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-            if text != "", showsClearSearchButton {
-                Button {
-                    text = ""
-                } label: {
-                    clearSearchButtonLabel()
+            
+            HStack(spacing: 3) {
+                Image(systemName: "magnifyingglass").foregroundColor(.gray)
+                TextField(title, text: $text, onEditingChanged: onEditingChanged, onCommit: onCommit).foregroundColor(.primary)
+                if text != "", showsClearSearchButton {
+                    Button {
+                        text = ""
+                    } label: {
+                        clearSearchButtonLabel()
+                    }
                 }
             }
+            .font(.subheadline)
+            .padding(5)
+            .background(
+                RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground))
+            )
+            
             if showsCancelButton {
                 Button {
                     onCancel()
