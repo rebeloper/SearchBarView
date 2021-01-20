@@ -46,21 +46,25 @@ var body: some View {
     VStack {
         
         SearchBarView(text: $searchText)
-    
+        
         SearchBarView(text: $searchText) {
             print("onCancel")
         }
-    
+        
         SearchBarView(title: "Type to search...", text: $searchText) {
             print("onCancel")
         }
-    
-        SearchBarView(title: "Type to search...", text: $searchText, showsCancelButton: true, cancelButtonLabel: { () -> AnyView in
-            AnyView(Image(systemName: "xmark"))
+        
+        SearchBarView(title: "Type to search...", text: $searchText, font: .custom("American Typewriter", size: 24), iconView: { () -> AnyView in
+            AnyView(Image(systemName: "wand.and.stars.inverse").foregroundColor(Color(.orange)))
+        }, showsCancelButton: true, cancelButtonLabel: { () -> AnyView in
+            AnyView(Image(systemName: "xmark").font(.system(size: 28, weight: .bold)).foregroundColor(.white))
         }, showsClearSearchButton: true, clearSearchButtonLabel: { () -> AnyView in
             AnyView(Text("Clear").bold().foregroundColor(.red))
+        }, textBackgroundView: { () -> AnyView in
+            AnyView(RoundedRectangle(cornerRadius: 32).foregroundColor(Color(.secondarySystemBackground)))
         }, backgroundView: { () -> AnyView in
-            AnyView(Color.black)
+            AnyView(Color.purple)
         }, spacing: 16) { (isTyping) in
             print("Is typing: \(isTyping)")
         } onCommit: {
@@ -81,6 +85,12 @@ Here's the created view:
 And when the user has typed something:
 
 <img src="../main/Sources/SearchBarView/SearchBarView1.png" width="350px">
+
+Also in Dark Appearance:
+
+<img src="../main/Sources/SearchBarView/SearchBarView2.png" width="350px">
+
+<img src="../main/Sources/SearchBarView/SearchBarView3.png" width="350px">
 
 ## ✍️ Contact
 
