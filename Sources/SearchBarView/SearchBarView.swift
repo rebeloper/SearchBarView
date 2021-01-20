@@ -12,10 +12,12 @@ public struct SearchBarView: View {
     
     var title: String
     @Binding var text: String
+    private var font: Font
     private var showsCancelButton: Bool
     private var cancelButtonLabel: () -> AnyView
     private var showsClearSearchButton: Bool
     private var clearSearchButtonLabel: () -> AnyView
+    private var textBackgroundView: () -> AnyView
     private var backgroundView: () -> AnyView
     private var spacing: CGFloat
     private var onEditingChanged: (Bool) -> Void
@@ -27,10 +29,12 @@ public struct SearchBarView: View {
          onCancel: @escaping () -> ()) {
         self.title = title
         self._text = text
+        self.font = .subheadline
         self.showsCancelButton = true
         self.cancelButtonLabel = { AnyView(Text("Cancel")) }
         self.showsClearSearchButton = true
         self.clearSearchButtonLabel =  { AnyView(Image(systemName: "xmark.circle.fill").foregroundColor(Color(.systemGray3))) }
+        self.textBackgroundView = { AnyView(RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground))) }
         self.backgroundView = { AnyView(Color(.systemBackground)) }
         self.spacing = 8
         self.onEditingChanged = {_ in}
@@ -38,12 +42,14 @@ public struct SearchBarView: View {
         self.onCancel = onCancel
     }
     
-    public init(title: String = "Search...",
+    public init(title: String = "Search",
          text: Binding<String>,
+         font: Font = .subheadline,
          showsCancelButton: Bool = true,
          cancelButtonLabel: @escaping () -> AnyView = { AnyView(Text("Cancel")) },
          showsClearSearchButton: Bool = true,
          clearSearchButtonLabel: @escaping () -> AnyView = { AnyView(Image(systemName: "xmark.circle.fill").foregroundColor(Color(.systemGray3))) },
+         textBackgroundView: @escaping () -> AnyView = { AnyView(RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground))) },
          backgroundView: @escaping () -> AnyView = { AnyView(Color(.systemBackground)) },
          spacing: CGFloat = 8,
          onEditingChanged: @escaping (Bool) -> Void = {_ in},
@@ -51,10 +57,12 @@ public struct SearchBarView: View {
          onCancel: @escaping () -> () = {}) {
         self.title = title
         self._text = text
+        self.font = font
         self.showsCancelButton = showsCancelButton
         self.cancelButtonLabel = cancelButtonLabel
         self.showsClearSearchButton = showsClearSearchButton
         self.clearSearchButtonLabel = clearSearchButtonLabel
+        self.textBackgroundView = textBackgroundView
         self.backgroundView = backgroundView
         self.spacing = spacing
         self.onEditingChanged = onEditingChanged
@@ -76,10 +84,10 @@ public struct SearchBarView: View {
                     }
                 }
             }
-            .font(.subheadline)
+            .font(font)
             .padding(5)
             .background(
-                RoundedRectangle(cornerRadius: 8).foregroundColor(Color(.secondarySystemBackground))
+                textBackgroundView()
             )
             
             if showsCancelButton {
