@@ -23,7 +23,11 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SearchBarView",
-            dependencies: []),
+            dependencies: [],
+            exclude: ["Resources/SearchBarView0.png",
+                      "Resources/SearchBarView1.png",
+                      "Resources/SearchBarView2.png",
+                      "Resources/SearchBarView3.png"]),
         .testTarget(
             name: "SearchBarViewTests",
             dependencies: ["SearchBarView"]),

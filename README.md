@@ -80,17 +80,17 @@ var body: some View {
 
 Here's the created view:
 
-<img src="../main/Sources/SearchBarView/SearchBarView0.png" width="350px">
+<img src="../main/Sources/Resources/SearchBarView0.png" width="350px">
 
 And when the user has typed something:
 
-<img src="../main/Sources/SearchBarView/SearchBarView1.png" width="350px">
+<img src="../main/Sources/Resources/SearchBarView1.png" width="350px">
 
 Also in Dark Appearance:
 
-<img src="../main/Sources/SearchBarView/SearchBarView2.png" width="350px">
+<img src="../main/Sources/Resources/SearchBarView2.png" width="350px">
 
-<img src="../main/Sources/SearchBarView/SearchBarView3.png" width="350px">
+<img src="../main/Sources/Resources/SearchBarView3.png" width="350px">
 
 ## ✍️ Contact
 
